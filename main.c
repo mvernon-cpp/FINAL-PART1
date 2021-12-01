@@ -9,3 +9,20 @@ int main(int argc, char **argv)
 
   return EXIT_SUCCESS;
 }
+
+void lsh_loop(void)
+{ //declare variables
+  char *line;
+  char **args;
+  int status;
+  //while loop checks variable "status"
+  do {
+    printf("> ");
+    line = lsh_read_line();
+    args = lsh_split_line(line);
+    status = lsh_execute(args);
+
+    free(line);
+    free(args);
+  } while (status);
+}
